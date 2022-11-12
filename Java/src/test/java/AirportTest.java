@@ -51,7 +51,7 @@ public class AirportTest {
     }
 
     @Test
-    public void test3() {
+    public void testSortByMaxLoadCapacity() {
         Airport airport = new Airport(planes);
         airport.sortByMaxLoadCapacity();
         List<? extends Plane> planesSortedByMaxLoadCapacity = airport.getPlanes();
@@ -79,14 +79,13 @@ public class AirportTest {
     public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified(){
         Airport airport = new Airport(planes);
         List<ExperimentalPlane> experimentalPlanes = airport.getExperimentalPlanes();
-//        boolean hasUnclassifiedPlanes = false;
-//        for(experimentalPlane experimentalPlane : experimentalPlanes){
-//            if(experimentalPlane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED){
-//                hasUnclassifiedPlanes = true;
-//                break;
-//            }
-//        }
-//        Assert.assertFalse(hasUnclassifiedPlanes);
-//        Assert.assertNotEquals(experimentalPlanes.getClassificationLevel(),ClassificationLevel.UNCLASSIFIED);
+        boolean hasUnclassifiedPlanes = false;
+        for(ExperimentalPlane experimentalPlane : experimentalPlanes){
+            if(experimentalPlane.getClassificationLevel() == ClassificationLevelType.UNCLASSIFIED){
+                hasUnclassifiedPlanes = true;
+                break;
+            }
+        }
+        Assert.assertFalse(hasUnclassifiedPlanes);
     }
 }
